@@ -26,3 +26,9 @@ variable "location" {
   type        = string
   default     = "swedencentral"
 }
+
+variable "enable_diagnostic_settings" {
+  description = "Enable diagnostic settings for the storage account."
+  type        = bool
+  default     = true
+}
