@@ -21,6 +21,13 @@ resource "azurerm_storage_container" "this" {
   storage_account_id = azurerm_storage_account.this.id
 }
 
+resource "azurerm_management_lock" "this" {
+  name       = "${azurerm_resource_group.this.name}-lock"
+  scope      = azurerm_resource_group.this.id
+  lock_level = "CanNotDelete"
+  notes      = "This is a management lock to prevent accidental deletion of the resource group."
+}
+
 resource "azurerm_log_analytics_workspace" "this" {
   count                        = var.enable_diagnostic_settings ? 1 : 0
   name                         = azurerm_storage_account.this.name
