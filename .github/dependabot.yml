@@ -30,5 +30,5 @@ updates:
       interval: "weekly"
     groups:
       all:
-   ignore:
+    ignore:
       update-types: ["version-update:semver-patch"]
