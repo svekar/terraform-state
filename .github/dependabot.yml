@@ -14,7 +14,7 @@ updates:
         patterns:
         - '*'
     ignore:
-      update-types: ["version-update:semver-patch"]
+      - update-types: ["version-update:semver-patch"]
       
   - package-ecosystem: "terraform" # See documentation for possible values
     directory: "/" # Location of package manifests
@@ -25,7 +25,7 @@ updates:
         patterns:
         - '*'      
     ignore:
-      update-types: ["version-update:semver-patch"]
+      - update-types: ["version-update:semver-patch"]
 
 
   - package-ecosystem: "github-actions" # See documentation for possible values
@@ -37,4 +37,4 @@ updates:
         patterns:
         - '*'
     ignore:
-      update-types: ["version-update:semver-patch"]
+      - update-types: ["version-update:semver-patch"]
