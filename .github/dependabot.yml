@@ -11,7 +11,8 @@ updates:
       interval: "weekly"
     groups:
       all:
-        patterns: '*'
+        patterns:
+        - '*'
     ignore:
       update-types: ["version-update:semver-patch"]
       
@@ -21,7 +22,8 @@ updates:
       interval: "weekly"
     groups: 
       all:
-        patterns: '*'      
+        patterns:
+        - '*'      
     ignore:
       update-types: ["version-update:semver-patch"]
 
@@ -32,6 +34,7 @@ updates:
       interval: "weekly"
     groups:
       all:
-        patterns: '*'
+        patterns:
+        - '*'
     ignore:
       update-types: ["version-update:semver-patch"]
