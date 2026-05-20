@@ -1,0 +1,11 @@
+name: ActionLint
+
+on:
+  push:
+    paths:
+      - .github/workflows/** 
+  workflow_dispatch:
+
+jobs:
+  call-actionlint-workflow:
+    uses: svekar/reusable-workflows/.github/workflows/actionlint.yaml@82ea6f3da6de00d52f1143285de1b1b25f7f70e4 # main 
