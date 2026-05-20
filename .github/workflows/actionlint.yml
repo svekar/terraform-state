@@ -8,4 +8,4 @@ on:
 
 jobs:
   call-actionlint-workflow:
-    uses: svekar/reusable-workflows/.github/workflows/actionlint.yaml@d7c29a092101c4f15b35cf7c77664db86116d441 # main 
+    uses: svekar/reusable-workflows/.github/workflows/actionlint.yaml@main # main 
