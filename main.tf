@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "this" {
   location = var.location
   name     = var.resource_group_name
@@ -22,6 +24,7 @@ resource "azurerm_storage_container" "this" {
 }
 
 resource "azurerm_management_lock" "this" {
+  count      = var.prevent_destroy ? 1 : 0
   name       = "${azurerm_resource_group.this.name}-lock"
   scope      = azurerm_resource_group.this.id
   lock_level = "CanNotDelete"

@@ -5,16 +5,31 @@ on:
     branches: [ main ]
   pull_request:
 
+permissions:
+  contents: read
+  id-token: write
+  
 jobs:
-  fmt-validate:
+  fmt-validate-plan-test:
     runs-on: ubuntu-latest
-
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_USE_OIDC: true
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      - name: Azure Login
+        uses: azure/login@7ddb5af1ef8758cf1353cf3b42f940aee27ba21c  # v3.0.2
+        with:
+          client-id: ${{ secrets.ARM_CLIENT_ID }}
+          tenant-id: ${{ secrets.ARM_TENANT_ID }}
+          subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+
       - uses: hashicorp/setup-terraform@5e8dbf3c6d9deaf4193ca7a8fb23f2ac83bb6c85 # v4.0.0
         with:
-          terraform_version: 1.14.2
+          terraform_version: 1.16.0
 
       - name: Terraform fmt
         run: terraform fmt -check -recursive
@@ -24,3 +39,9 @@ jobs:
 
       - name: Terraform validate
         run: terraform validate
+
+      - name: Terraform plan
+        run: terraform plan
+      
+      - name: Terraform test
+        run: terraform test
