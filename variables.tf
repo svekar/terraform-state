@@ -32,3 +32,9 @@ variable "enable_diagnostic_settings" {
   type        = bool
   default     = true
 }
+
+variable "prevent_destroy" {
+  description = "Whether to apply a management lock to prevent accidental deletion of the resource group."
+  type        = bool
+  default     = true
+}

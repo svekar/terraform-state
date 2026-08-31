@@ -1,6 +1,3 @@
-
-data "azurerm_client_config" "current" {}
-
 import {
   to = azurerm_resource_group.this
   id = join("", [
@@ -43,5 +40,14 @@ import {
     "/subscriptions/",
     data.azurerm_client_config.current.subscription_id,
     "/resourceGroups/tfstate/providers/Microsoft.Storage/storageAccounts/svejks6tfstate/blobServices/default|blob_diagnostics",
+  ])
+}
+
+import {
+  to = azurerm_management_lock.this
+  id = join("", [
+    "/subscriptions/",
+    data.azurerm_client_config.current.subscription_id,
+    "/resourceGroups/tfstate/providers/Microsoft.Authorization/locks/tfstate-lock"
   ])
 }

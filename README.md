@@ -24,6 +24,8 @@ terraform {
 You can customize the defaults by providing `var.location`, `var.storage_account_name`,
 `var.container_name`, and `var.resource_group_name` when invoking the module.
 
-The `imports.tf` file contains sample import statements used when importing
-existing resources into Terraform state — see the file for details.
+The `imports.tf.reference` file contains sample import statements used when importing
+existing resources into Terraform state — see the file for details. It uses the
+`.reference` extension (instead of `.tf`) so that Terraform does not load it during
+normal operation, since its `import` blocks would otherwise break `terraform test`.
 
